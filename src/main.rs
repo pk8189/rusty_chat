@@ -72,8 +72,8 @@ pub async fn login_handler(body: LoginRequest) -> WebResult<impl Reply> {
 
     match selected_user {
         Ok(selected_user) => {
-            let token = auth::create_jwt(&selected_user.id, &Role::from_str("ADMIN"))
-                .map_err(|e| reject::custom(e))?;
+            let token =
+                auth::create_jwt(&selected_user.id, &Role::Admin).map_err(|e| reject::custom(e))?;
             Ok(reply::json(&LoginResponse { token }))
         }
         Err(_) => Err(reject::custom(WrongCredentialsError)),
