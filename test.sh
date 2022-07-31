@@ -1,5 +1,5 @@
 #!/bin/bash
-LOGIN_RESULT=$(curl http://localhost:8000/login -d '{"username": "patrick", "password": "password"}' -H 'Content-Type: application/json')
+LOGIN_RESULT=$(curl http://localhost:8000/login -d '{"username": "Finn", "password": "patstinks"}' -H 'Content-Type: application/json')
 
 TOKEN=$(echo $LOGIN_RESULT | jq -r '.token')
 
