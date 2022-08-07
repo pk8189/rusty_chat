@@ -27,3 +27,19 @@ if you already have rust you can skip this
 
 ## Delete a user
 `cargo run --bin delete_user username`
+
+
+### Tasks
+- refactor the module system so the code is easier to navigate
+- add DB models for channels, messages, and friends
+- API endpoint for "create channel"
+- API endpoint to add a user as "friend"
+- API endpoint for "invite users to channel"
+- API endpoint for "get all channels"
+- API endpoint for "get all friends"
+
+flow:
+- create a new channel
+- (optional) request to be friends with x users
+- invite users to channel
+- start chatting
