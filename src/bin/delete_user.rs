@@ -1,12 +1,13 @@
 extern crate diesel;
-extern crate rusty_chat;
 
 use self::diesel::prelude::*;
-use self::rusty_chat::*;
 use std::env::args;
 
+use rusty_chat::db::establish_connection;
+
+#[allow(dead_code)]
 fn main() {
-    use rusty_chat::schema::users::dsl::*;
+    use rusty_chat::user::models::users::dsl::*;
 
     let target = args().nth(1).expect("Expected a target to match against");
     let pattern = format!("%{}%", target);
@@ -16,6 +17,9 @@ fn main() {
         .execute(&connection)
         .expect("Error deleting user");
 
-    println!("Deleted {} users", num_deleted);
-    println!("Deleted {}", target);
+    if num_deleted == 0 {
+        println!("No user with name {}. No user deleted", target);
+    } else {
+        println!("Deleted {}", target);
+    }
 }

@@ -1,7 +1,8 @@
 use serde::Serialize;
-use std::convert::Infallible;
 use thiserror::Error;
 use warp::{http::StatusCode, Rejection, Reply};
+use std::convert::Infallible;
+
 
 #[derive(Error, Debug)]
 pub enum Error {

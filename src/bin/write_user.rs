@@ -1,10 +1,10 @@
 extern crate diesel;
-extern crate rusty_chat;
 
-use diesel::prelude::*;
-use rusty_chat::*;
+use rusty_chat::db::establish_connection;
+use rusty_chat::user::handlers::create_user;
 use std::io::stdin;
 
+#[allow(dead_code)]
 fn main() {
     let connection = establish_connection();
 
@@ -22,20 +22,4 @@ fn main() {
         "Successfully created user {} with ID {} ",
         user.username, user.id
     );
-}
-
-use self::models::{NewUser, User};
-
-pub fn create_user<'a>(conn: &PgConnection, username: &'a str, password: &'a str) -> User {
-    use schema::users;
-
-    let new_user = NewUser {
-        username: username,
-        password: password,
-    };
-
-    diesel::insert_into(users::table)
-        .values(&new_user)
-        .get_result(conn)
-        .expect("Error saving new user!")
 }

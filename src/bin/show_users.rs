@@ -1,12 +1,12 @@
 extern crate diesel;
-extern crate rusty_chat;
 
-use self::models::*;
 use diesel::prelude::*;
-use rusty_chat::*;
+use rusty_chat::db::establish_connection;
+use rusty_chat::user::models::User;
 
+#[allow(dead_code)]
 fn main() {
-    use self::schema::users::dsl::*;
+    use rusty_chat::user::models::users::dsl::*;
 
     let connection = establish_connection();
     let results = users
