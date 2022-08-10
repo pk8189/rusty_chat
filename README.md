@@ -28,6 +28,11 @@ if you already have rust you can skip this
 ## Delete a user
 `cargo run --bin delete_user username`
 
+## Run the test
+- run the server
+- create a user
+- `cargo run --bin test_api`
+
 
 ### Tasks
 - refactor the module system so the code is easier to navigate
