@@ -5,6 +5,7 @@ extern crate dotenv;
 use warp::Filter;
 
 mod errors;
+pub mod group;
 pub mod user;
 use errors::handle_rejection;
 use user::auth::{with_auth, Role};

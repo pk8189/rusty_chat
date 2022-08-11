@@ -2,7 +2,7 @@
 table! {
     users (id) {
         id -> Int4,
-        username -> Varchar,
+        username -> Varchar, // need to add a unique constraint
         password -> Varchar,
     }
 }

@@ -1,0 +1,11 @@
+CREATE TABLE groups (
+  id SERIAL PRIMARY KEY,
+  owner_id INTEGER NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE group_users (
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER NOT NULL REFERENCES groups (id) ON DELETE CASCADE,
+    member_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
+)
